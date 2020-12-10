@@ -4,7 +4,7 @@ const queryCocktailAPI = () => {
   .then(data => {
     console.log(data);
     data.drinks.forEach(drink => {
-      const cocktailNameList = `<li>${drink.strDrink}<img class="img-cocktail" src="${drink.strDrinkThumb}"></li>`;
+      const cocktailNameList = `<li>${drink.strDrink}</li><img class="img-cocktail" src="${drink.strDrinkThumb}">`;
       const cocktailList = document.querySelector('.cocktail-list');
       cocktailList.insertAdjacentHTML('beforeend', cocktailNameList);
     });
