@@ -1,0 +1,1 @@
+(()=>{"use strict";fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita").then((t=>t.json())).then((t=>{console.log(t),t.drinks.forEach((t=>{const c=`<li>${t.strDrink}<img class="img-cocktail" src="${t.strDrinkThumb}"></li>`;document.querySelector(".cocktail-list").insertAdjacentHTML("beforeend",c)}))}))})();
