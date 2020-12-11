@@ -1,5 +1,6 @@
 const cocktailList = document.querySelector('.cocktail-list');
 
+
 const queryCocktailAPI = (cocktailName) => {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
   .then(response => response.json())
@@ -15,6 +16,8 @@ const queryCocktailAPI = (cocktailName) => {
     });
   });
 };
+
+queryCocktailAPI('martini');
 
 const cocktailSearchForm = document.querySelector('.form-cocktail-search');
 cocktailSearchForm.addEventListener('submit', (event) => {
