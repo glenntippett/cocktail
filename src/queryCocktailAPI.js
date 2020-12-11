@@ -1,5 +1,5 @@
 const queryCocktailAPI = () => {
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito')
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini')
   .then(response => response.json())
   .then(data => {
     data.drinks.forEach(drink => {
