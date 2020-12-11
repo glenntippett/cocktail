@@ -2,7 +2,22 @@
   height: 300px;
   width: 300px;
   border-radius: 4px;
-  // filter: brightness(50%);
   color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background-size: contain;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.img-cocktail:hover {
+  color: pink;
+  text-decoration: none;
+  font-size: 2.1rem;
+  transform: scale(1.03);
 }

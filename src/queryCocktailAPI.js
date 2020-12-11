@@ -1,12 +1,13 @@
 const queryCocktailAPI = () => {
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito')
   .then(response => response.json())
   .then(data => {
     data.drinks.forEach(drink => {
       const cocktailNameList = `
-      <li class="img-cocktail" 
-      style="background-image: url(${drink.strDrinkThumb})">
-      ${drink.strDrink}</li>
+      <a class="img-cocktail" 
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${drink.strDrinkThumb})"
+      href="#">
+      ${drink.strDrink}</a>
       `;
       const cocktailList = document.querySelector('.cocktail-list');
       cocktailList.insertAdjacentHTML('beforeend', cocktailNameList);
