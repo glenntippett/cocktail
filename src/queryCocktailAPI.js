@@ -1,5 +1,7 @@
-const queryCocktailAPI = () => {
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini')
+const cocktailList = document.querySelector('.cocktail-list');
+
+const queryCocktailAPI = (cocktailName) => {
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
   .then(response => response.json())
   .then(data => {
     data.drinks.forEach(drink => {
@@ -9,10 +11,17 @@ const queryCocktailAPI = () => {
       href="#">
       ${drink.strDrink}</a>
       `;
-      const cocktailList = document.querySelector('.cocktail-list');
       cocktailList.insertAdjacentHTML('beforeend', cocktailNameList);
     });
   });
 };
+
+const cocktailSearchForm = document.querySelector('.form-cocktail-search');
+cocktailSearchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  cocktailList.innerHTML = "";
+  const cocktailName = document.querySelector('#input-cocktail-name').value;
+  queryCocktailAPI(cocktailName);
+});
 
 export { queryCocktailAPI };
