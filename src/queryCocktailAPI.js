@@ -34,7 +34,7 @@ const querySingleCocktailInfo = async (event) => {
   const drinkId = event.currentTarget.dataset.id;
   const queryString = `?id=${drinkId}`;
   window.location.href = `cocktail-recipe.html${queryString}`;
-  // const data = await queryCocktailById(drinkId);
+  const data = await queryCocktailById(drinkId);
 }
 
 const linkToCocktailRecipePage = () => {
