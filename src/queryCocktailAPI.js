@@ -30,11 +30,25 @@ const queryCocktailById = cocktailId => {
   });
 }
 
+const buildCocktailRecipe = (data) => {
+  console.log(data.drinks[0]);
+  const currentDrink = data.drinks[0];
+  const ingredients = `<ul>
+  <li>${currentDrink.strIngredient1}: ${currentDrink.strMeasure1}</li>
+  <li>${currentDrink.strIngredient2}: ${currentDrink.strMeasure2}</li>
+  <li>${currentDrink.strIngredient3}: ${currentDrink.strMeasure2}</li>
+  </ul>
+  `;
+  const instructions = `<p>${currentDrink.strInstructions}</p>`;
+  const recipe = ingredients + instructions;
+  document.querySelector('.recipe-container').insertAdjacentHTML('beforeend', recipe);
+} 
+
 const querySingleCocktailInfo = async (event) => {
   const drinkId = event.currentTarget.dataset.id;
-  const queryString = `?id=${drinkId}`;
-  window.location.href = `cocktail-recipe.html${queryString}`;
   const data = await queryCocktailById(drinkId);
+  buildCocktailList(data);
+  buildCocktailRecipe(data);
 }
 
 const linkToCocktailRecipePage = () => {
@@ -69,6 +83,7 @@ const searchForCocktail = async (event) => {
   const cocktailName = document.querySelector('#input-cocktail-name').value;
   const data = await queryCocktailAPI(cocktailName);
   buildCocktailList(data);
+  linkToCocktailRecipePage();
 }
 
 const populateFirstPageLoad = async () => {
