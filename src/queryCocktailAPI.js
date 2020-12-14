@@ -1,4 +1,3 @@
-
 const queryCocktailAPI = cocktailName => {
   return new Promise ((resolve, reject) => {
     if (resolve) {
@@ -33,9 +32,9 @@ const queryCocktailById = cocktailId => {
 
 const querySingleCocktailInfo = async (event) => {
   const drinkId = event.currentTarget.dataset.id;
-  const data = await queryCocktailById(drinkId);
-  console.log(data);
-  document.querySelector('.cocktail-page-heading').innerText = data.strDrink;
+  const queryString = `?id=${drinkId}`;
+  window.location.href = `cocktail-recipe.html${queryString}`;
+  // const data = await queryCocktailById(drinkId);
 }
 
 const linkToCocktailRecipePage = () => {
@@ -43,7 +42,6 @@ const linkToCocktailRecipePage = () => {
   cocktailThumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener('click', querySingleCocktailInfo)
   });
-
 }
 
 const buildCocktailList = (data) => {
@@ -56,7 +54,7 @@ const buildCocktailList = (data) => {
   } else {
     data.drinks.forEach(drink => {
       const cocktailNameList = `
-      <a class="img-cocktail" data-id="${drink.idDrink}" href="cocktail-recipe.html"
+      <a class="img-cocktail" data-id="${drink.idDrink}"
       style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${drink.strDrinkThumb})"
       href="#">
       ${drink.strDrink}</a>
