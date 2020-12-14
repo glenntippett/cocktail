@@ -1,7 +1,6 @@
 import { clearHTML } from './helpers/clearHTML';
 import { removeClass } from './helpers/removeClass';
 
-
 const queryCocktailAPI = cocktailName => {
   return new Promise ((resolve, reject) => {
     if (resolve) {
