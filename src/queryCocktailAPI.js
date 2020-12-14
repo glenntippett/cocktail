@@ -1,5 +1,3 @@
-const cocktailList = document.querySelector('.cocktail-list');
-const cocktailSearchForm = document.querySelector('.form-cocktail-search');
 
 const queryCocktailAPI = cocktailName => {
   return new Promise ((resolve, reject) => {
@@ -50,6 +48,8 @@ const linkToCocktailRecipePage = () => {
 
 const buildCocktailList = (data) => {
   // Check if drink name entered is found
+  const cocktailList = document.querySelector('.cocktail-list');
+  cocktailList.innerHTML = "";
   if (data.drinks === null) {
     const noDrinksFound = '<p>No drinks found...</p>';
     cocktailList.insertAdjacentHTML('beforeend', noDrinksFound);
@@ -62,14 +62,12 @@ const buildCocktailList = (data) => {
       ${drink.strDrink}</a>
       `;
       cocktailList.insertAdjacentHTML('beforeend', cocktailNameList);
-      linkToCocktailRecipePage();
     });
   }
 }
 
 const searchForCocktail = async (event) => {
   event.preventDefault();
-  cocktailList.innerHTML = "";
   const cocktailName = document.querySelector('#input-cocktail-name').value;
   const data = await queryCocktailAPI(cocktailName);
   buildCocktailList(data);
@@ -78,12 +76,10 @@ const searchForCocktail = async (event) => {
 const populateFirstPageLoad = async () => {
   const data = await queryCocktailAPI('martini');
   buildCocktailList(data);
+  linkToCocktailRecipePage();
 }
 
-// Show default cocktails on home page
-populateFirstPageLoad();
-
-// Generate cocktail list based on user input into search form
-cocktailSearchForm.addEventListener('submit', searchForCocktail)
-
-export { queryCocktailAPI };
+export { 
+  searchForCocktail,
+  populateFirstPageLoad
+};
