@@ -1,0 +1,15 @@
+.recipe {
+  margin-top: 24px;
+  max-width: 500px;
+
+  p {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 995px) {
+  .recipe {
+    margin-left: 24px;
+    max-width: 400px;
+  }
+}
